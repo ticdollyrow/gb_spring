@@ -40,7 +40,7 @@ public class ProductServlet  implements Servlet {
              ) {
             servletResponse.getWriter().println("<h1>" +  prod.toString() +"</h1>");
         }
-
+        logger.info("End of Request");
     }
 
     @Override
