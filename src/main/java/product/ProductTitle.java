@@ -4,4 +4,6 @@ public enum ProductTitle {
     Orange,
     Milk,
     Bread,
+    Beef,
+    Tea,
 }

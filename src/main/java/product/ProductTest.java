@@ -15,7 +15,7 @@ public class ProductTest {
 
         for(int i = 0; i < count; i++){
             id += 1;
-            cost =  random.nextFloat() * 10;
+            cost =  random.nextFloat() * 100;
             title = String.valueOf(ProductTitle.values()[new Random().nextInt(ProductTitle.values().length)]);
             list.add(new Product(id, title, cost));
         }
