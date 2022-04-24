@@ -3,10 +3,8 @@ package ru.spring.spring_lesson3.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import ru.spring.spring_lesson3.Model.Product;
 import ru.spring.spring_lesson3.Service.CartService;
 import ru.spring.spring_lesson3.Service.ProductService;
 
@@ -50,6 +48,24 @@ public class MainController {
         model.addAttribute("cartList", cartService.showCart());
         return "cartList";
     }
+
+    @GetMapping("/product/add")
+    @ResponseBody
+    public void addProduct(Long id, String title, Float cost){
+        productService.addProduct(id, title, cost);
+    }
+
+    @GetMapping("/addProduct")
+    public String formProduct( ){
+        return "addProduct";
+    }
+
+    @PostMapping("/product/add")
+    @ResponseBody
+    public void addProductPost( @RequestBody Product product){
+        productService.add(product);
+    }
+
 
     @GetMapping("/test")
     @ResponseBody

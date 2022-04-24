@@ -37,4 +37,12 @@ public class ProductRepository {
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Not found"));
     }
+
+    public void addProduct(Long id, String title, Float cost){
+        products.add(new Product(id, title, cost));
+    }
+
+    public void add(Product product){
+        products.add(product);
+    }
 }

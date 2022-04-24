@@ -20,4 +20,12 @@ public class ProductService {
     public List<Product> getAll(){
         return productRepository.getAllProduct();
     }
+
+    public void addProduct(Long id, String title, Float cost){
+        productRepository.addProduct(id, title, cost);
+    }
+
+    public void add(Product product){
+        productRepository.add(product);
+    }
 }
