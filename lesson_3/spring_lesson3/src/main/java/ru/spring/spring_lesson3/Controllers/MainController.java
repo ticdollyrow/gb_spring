@@ -63,6 +63,7 @@ public class MainController {
     @PostMapping("/product/add")
     @ResponseBody
     public void addProductPost( @RequestBody Product product){
+
         productService.add(product);
     }
 
