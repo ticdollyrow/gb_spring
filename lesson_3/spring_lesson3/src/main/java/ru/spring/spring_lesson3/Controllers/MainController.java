@@ -8,12 +8,32 @@ import ru.spring.spring_lesson3.Model.Product;
 import ru.spring.spring_lesson3.Service.CartService;
 import ru.spring.spring_lesson3.Service.ProductService;
 
+import java.util.List;
+
 @Controller
 public class MainController {
     @Autowired
     private ProductService productService;
     @Autowired
     private CartService cartService;
+
+    @GetMapping("/cart/all")
+    @ResponseBody
+    public List<Product> showCart(){
+        return cartService.showCart();
+    }
+
+    @GetMapping("/cart/delete")
+    @ResponseBody
+    public void delete(@RequestParam Long id){
+        cartService.delete(id);
+    }
+
+    @GetMapping("/products/all")
+    @ResponseBody
+    public List<Product> getAllProduct(){
+        return productService.getAll();
+    }
 
     @GetMapping("/product/{id}")
     public String getProduct(Model model, @PathVariable Long id){
