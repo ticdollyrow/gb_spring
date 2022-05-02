@@ -3,12 +3,12 @@ package ru.spring.spring_lesson3.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import ru.spring.spring_lesson3.Model.Product;
 import ru.spring.spring_lesson3.Service.CartService;
 import ru.spring.spring_lesson3.Service.ProductService;
+
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -16,6 +16,24 @@ public class MainController {
     private ProductService productService;
     @Autowired
     private CartService cartService;
+
+    @GetMapping("/cart/all")
+    @ResponseBody
+    public List<Product> showCart(){
+        return cartService.showCart();
+    }
+
+    @GetMapping("/cart/delete")
+    @ResponseBody
+    public void delete(@RequestParam Long id){
+        cartService.delete(id);
+    }
+
+    @GetMapping("/products/all")
+    @ResponseBody
+    public List<Product> getAllProduct(){
+        return productService.getAll();
+    }
 
     @GetMapping("/product/{id}")
     public String getProduct(Model model, @PathVariable Long id){
@@ -50,6 +68,25 @@ public class MainController {
         model.addAttribute("cartList", cartService.showCart());
         return "cartList";
     }
+
+    @GetMapping("/product/add")
+    @ResponseBody
+    public void addProduct(Long id, String title, Float cost){
+        productService.addProduct(id, title, cost);
+    }
+
+    @GetMapping("/addProduct")
+    public String formProduct( ){
+        return "addProduct";
+    }
+
+    @PostMapping("/product/add")
+    @ResponseBody
+    public void addProductPost( @RequestBody Product product){
+
+        productService.add(product);
+    }
+
 
     @GetMapping("/test")
     @ResponseBody
