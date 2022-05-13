@@ -1,9 +1,22 @@
 package ru.spring.spring_lesson3.Model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "product")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     Long id;
+    @Column(name = "title")
     String  title;
+    @Column(name = "cost")
     Float cost;
+
+    public Product(){
+
+    }
 
     public Product(Long id, String title, Float cost) {
         this.id = id;
