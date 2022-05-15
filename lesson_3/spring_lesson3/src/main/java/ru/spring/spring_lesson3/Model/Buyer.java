@@ -38,4 +38,12 @@ public class Buyer {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Buyer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

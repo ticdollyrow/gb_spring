@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.spring.spring_lesson3.Model.Buyer;
 import ru.spring.spring_lesson3.Model.Product;
-import ru.spring.spring_lesson3.Service.BuyerService;
 import ru.spring.spring_lesson3.Service.CartService;
 import ru.spring.spring_lesson3.Service.ProductService;
 

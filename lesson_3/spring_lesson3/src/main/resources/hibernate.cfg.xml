@@ -17,5 +17,6 @@
 
         <mapping class="ru.spring.spring_lesson3.Model.Product"/>
         <mapping class="ru.spring.spring_lesson3.Model.Buyer"/>
+        <mapping class="ru.spring.spring_lesson3.Model.Order"/>
     </session-factory>
 </hibernate-configuration>
