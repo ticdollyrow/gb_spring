@@ -1,6 +1,8 @@
 package ru.lesson7.lesson7.Services;
 
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.lesson7.lesson7.Model.Product;
 import ru.lesson7.lesson7.Repositories.ProductRepository;
@@ -31,7 +33,8 @@ public class ProductService {
         return productRepository.findAllByCostBetween(min, max);
     }
 
-    public void save(Product product){
+    public ResponseEntity<?> save(Product product){
         productRepository.save(product);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

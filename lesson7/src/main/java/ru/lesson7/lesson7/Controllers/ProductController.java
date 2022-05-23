@@ -39,7 +39,7 @@ public class ProductController {
     }
 
     @PostMapping(path = "/products")
-    public void create(@RequestBody Product newProduct) {
-       productService.save(newProduct);
+    public ResponseEntity<?>  create(@RequestBody Product newProduct) {
+      return productService.save(newProduct);
     }
 }
