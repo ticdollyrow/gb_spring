@@ -5,7 +5,15 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
         $http.get(contextPath + '/products')
             .then(function (response) {
                 $scope.productList = response.data;
+                console.log($scope.productList);
             });
+    };
+
+    $scope.loadProductsPage = function () {
+        $http.get(contextPath + '/products_page')
+        .then(function (response) {
+            $scope.productList = response.data;
+        });
     };
 
     $scope.createProductJson = function (){

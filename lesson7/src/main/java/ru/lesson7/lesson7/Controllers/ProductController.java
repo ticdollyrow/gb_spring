@@ -1,5 +1,6 @@
 package ru.lesson7.lesson7.Controllers;
 
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,5 +42,17 @@ public class ProductController {
     @PostMapping(path = "/products")
     public ResponseEntity<?>  create(@RequestBody Product newProduct) {
       return productService.save(newProduct);
+    }
+
+    @GetMapping("/products_page")
+    public Page<Product> getProducts(@RequestParam(name = "p", defaultValue = "1") Integer page,
+                                     @RequestParam(name = "min_price", required = false) Float minPrice,
+                                     @RequestParam(name = "max_price", required = false) Float maxPrice
+
+    ) {
+        if(page < 1){
+            page = 1;
+        }
+        return productService.findProducts(page, maxPrice, minPrice);
     }
 }
