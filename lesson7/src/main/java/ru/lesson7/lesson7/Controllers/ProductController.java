@@ -39,6 +39,11 @@ public class ProductController {
         return productService.findByPriceBetween(min, max);
     }
 
+    @GetMapping("/products/filter")
+    public List<Product> filterProduct(@RequestParam(required = false ) Float min, @RequestParam( required = false) Float max){
+        return productService.filterProducts(min, max);
+    }
+
     @PostMapping(path = "/products")
     public ResponseEntity<?>  create(@RequestBody Product newProduct) {
       return productService.save(newProduct);

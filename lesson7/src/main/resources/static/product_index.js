@@ -27,7 +27,7 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
     $scope.filterProduct = function (){
         console.log($scope.filter)
         $http({
-            url: contextPath + "/products/between",
+            url: contextPath + "/products/filter",
             method: 'get',
             params: {
                 min: $scope.filter.min,

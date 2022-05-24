@@ -54,4 +54,17 @@ public class ProductService {
 
         return productRepository.findAll(spec, PageRequest.of(p -1, 5));
     }
+
+    public List<Product> filterProducts(Float minPrice, Float maxPrice){
+        Specification<Product> spec = Specification.where(null);
+
+        if(minPrice != null){
+            spec = spec.and(ProductSpecification.costGreaterOrElseThan(minPrice));
+        }
+        if(maxPrice != null){
+            spec = spec.and(ProductSpecification.costLessThanOrEqualTo(maxPrice));
+        }
+
+        return productRepository.findAll(spec);
+    }
 }
