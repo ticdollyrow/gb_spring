@@ -1,5 +1,6 @@
 package ru.lesson7.lesson7.Model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Table(name = "products")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,11 +21,6 @@ public class Product {
     @Column(name = "price")
     Float cost;
 
-    public Product(Long id, String title, Float cost) {
-        this.id = id;
-        this.title = title;
-        this.cost = cost;
-    }
 
 }
 

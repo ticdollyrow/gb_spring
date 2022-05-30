@@ -22,10 +22,6 @@ public class ProductController {
     private final ProductService productService;
     private final ProductConverter productConverter;
 
-//    public ProductController(ProductService productService) {
-//        this.productService = productService;
-//    }
-
     @GetMapping("/{id}")
     public ProductDto findProductById(@PathVariable Long id){
         return productConverter.entityToDto(productService.findById(id));
@@ -49,13 +45,18 @@ public class ProductController {
 
     @PostMapping()
     public ResponseEntity<?>  create(@RequestBody ProductDto newProductDto) {
-      return productService.save(productConverter.dtoToEntity(newProductDto));
+      return productService.save(newProductDto);
+    }
+
+    @PutMapping
+    public void updateProduct(@RequestParam ProductDto productDto){
+        productService.updateProduct(productDto);
     }
 
     @GetMapping("/page")
     public Page<ProductDto> getProducts(@RequestParam(name = "p", defaultValue = "1") Integer page,
-                                     @RequestParam(name = "min_price", required = false) Float minPrice,
-                                     @RequestParam(name = "max_price", required = false) Float maxPrice
+                                        @RequestParam(name = "min_price", required = false) Float minPrice,
+                                        @RequestParam(name = "max_price", required = false) Float maxPrice
 
     ) {
         if(page < 1){
