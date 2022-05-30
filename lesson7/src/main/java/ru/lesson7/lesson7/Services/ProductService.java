@@ -22,7 +22,6 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class ProductService {
     private final ProductRepository productRepository;
     private final ProductConverter productConverter;

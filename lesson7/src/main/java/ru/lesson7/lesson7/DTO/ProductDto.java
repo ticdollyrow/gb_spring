@@ -17,4 +17,5 @@ public class ProductDto {
         this.title = product.getTitle();
         this.cost = product.getCost();
     }
+
 }

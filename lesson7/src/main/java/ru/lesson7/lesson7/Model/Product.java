@@ -21,5 +21,6 @@ public class Product {
     @Column(name = "price")
     Float cost;
 
+
 }
 
